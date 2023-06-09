@@ -1,3 +1,5 @@
+import categories from "../categories.ts";
+
 interface Props {
   onSelectCategory: (category: string) => void;
 }
@@ -11,9 +13,11 @@ export function ExpenseFilter({ onSelectCategory }: Props) {
       }}
     >
       <option value="">All</option>
-      <option value="Food">Groceries</option>
-      <option value="Transportation">Utilities</option>
-      <option value="Housing">Entertainment</option>
+      {categories.map((category) => (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      ))}
     </select>
   );
 }

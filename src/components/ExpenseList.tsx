@@ -1,7 +1,7 @@
 interface Expense {
   id: number;
   description: string;
-  amound: number;
+  amount: number;
   category: string;
 }
 
@@ -26,7 +26,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
           {expenses.map((expense) => (
             <tr key={expense.id}>
               <td>{expense.description}</td>
-              <td>{expense.amound}</td>
+              <td>{expense.amount}</td>
               <td>{expense.category}</td>
               <td>
                 <button
@@ -46,7 +46,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
             <td>Total</td>
             <td>
               $ {expenses.reduce((total, expense) => {
-                return total + expense.amound;
+                return total + expense.amount;
               }, 0)}
             </td>
             <td></td>

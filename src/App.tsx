@@ -2,6 +2,8 @@ import ExpenseList from "./components/ExpenseList.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { ExpenseFilter } from "./components/ExpenseFilter.tsx";
+import { ExpenseForm } from "./components/ExpenseForm.tsx";
+
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -10,26 +12,32 @@ function App() {
     {
       id: 1,
       description: "Buy papertowels",
-      amound: 1.99,
-      category: "Books",
+      amount: 1.99,
+      category: "Utilities",
     },
     {
       id: 2,
       description: "Buy milk",
-      amound: 1.49,
+      amount: 1.49,
       category: "Food",
     },
     {
       id: 3,
       description: "Buy a movie",
-      amound: 14.50,
+      amount: 14.5,
       category: "Entertainment",
     },
     {
       id: 4,
       description: "Buy bread",
-      amound: 0.99,
+      amount: 0.99,
       category: "Food",
+    },
+    {
+      id: 5,
+      description: "Buy a book",
+      amount: 9.99,
+      category: "Books",
     },
   ]);
 
@@ -43,6 +51,15 @@ function App() {
 
   return (
     <div>
+      <div>
+        <ExpenseForm
+          onSubmit={(expense) => {
+            console.log(expense)
+            setExpenses([...expenses, {...expense, id: expenses.length + 1}]);
+          }}
+        />
+      </div>
+
       <div className="mb-3">
         <ExpenseFilter
           onSelectCategory={(category) => {
